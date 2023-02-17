@@ -1,0 +1,11 @@
+<div class="card-post-container">
+  <div class="card w-50 mx-auto mt-5 shadow-lg">
+  <%= image_tag @post.image, class: "card-imag-top" %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @post.title %></h5>
+    <p class="card-text"><%= @post.introduction %></p>
+    <%= link_to @post.user.name, admin_user_path(@post.user.id), class: "btn btn-info" %>
+    <%= link_to "投稿内容編集", edit_admin_post_path(@post.id), class: "ml-4 text-secondary" %>
+  </div>
+</div>
+</dic>

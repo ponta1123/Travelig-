@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-4">
+      <h3>新規投稿</h3>
+    </div>
+  </div>
+  <div class="row">
+    <%= form_with model: @post, url: "/posts", method: :post do |f| %>
+     <div class="col-4 mt-2">
+       <%= f.label :タイトル %>
+       <%= f.text_field :title %>
+     </div>
+     <div class="col-4 mt-2">
+       <%= f.label :本文 %>
+       <%= f.text_area :introduction %>
+     </div>
+     <div class="col-4 mt-2">
+       <%= f.label :観光地名 %>
+       <%= f.text_area :tourist_spot, placeholder: "例:長崎県ハウステンボス" %>
+     </div>
+     <div class="col-4 mt-2">
+       <%= f.label :画像 %>
+       <%= f.file_field :image, accept: "image/*" %>
+     </div>
+     <div class="col mt-2">
+       <%= f.submit "投稿" %>
+     </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row mt-3 text-success">
+    <h4>投稿一覧</h4>
+  </div>
+  <div class="row mt-2">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th scope="col">投稿者</th>
+          <th scope="col">タイトル</th>
+          <th scope="col">内容</th>
+          <th scope="col">投稿日</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each_with_index do |post, i| %>
+          <tr>
+            <th scop="row"><%= i+1 %></th>
+            <td><%= link_to post.user.name, admin_user_path(post.user.id) %></td>
+            <td><%= link_to post.title, admin_post_path(post.id) %></td>
+            <td><%= post.introduction %></td>
+            <td><%= post.created_at.strftime('%Y/%m/%d/ %H:%M') %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

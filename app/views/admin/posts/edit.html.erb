@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-4">
+      <h4>投稿内容編集</h4>
+    </div>
+  </div>
+  <%= form_with model: @post, url: admin_post_path(@post.id), method: :patch do |f| %>
+  <div class="row mt-2">
+    <%= f.label :タイトル, class: "h5 col-3 text-secondary" %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="row mt-2">
+    <%= f.label :本文, class: "h5 col-3 text-secondary" %>
+    <%= f.text_area :introduction %>
+  </div>
+  <div class="row mt-2">
+    <%= f.label :観光地名, class: "h5 col-3 text-secondary" %>
+    <%= f.text_area :tourist_spot %>
+  </div>
+  <div class="row mt-2">
+    <%= f.label :写真, class: "h5 col-3 text-secondary" %>
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
+  <div class="row mt-4">
+    <%= f.submit "保存", class: "col-1 offset-2 btn btn-success" %>
+  </div>
+  <% end %>
+</div>
