@@ -1,2 +1,21 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="card mt-2">
+      <%= image_tag @post.image, class: "card-image-top" %>
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= @post.title %>
+        </h5>
+        <p class="card-text">
+          <%= @post.introduction %>
+        </p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">TAG</li>
+        </ul>
+        <div class="card-footer">
+          <small class="text-muted"><%= @post.user.name %></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
