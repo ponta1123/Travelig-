@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col text-center">
+      <h3 class="text-secondary"><%= @user.name %>さんの投稿一覧</h3>
+    </div>
+  </div>
+  <div class="row row-cols-3 row-cols-md-4 g-4">
+    <% @users.each do |user| %>
+    <div class="col my-3">
+      <div class="card rounded border border-primary h-100">
+      <%= image_tag post.image, class: "card-image-top" %>
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to post.title, post_path(post.id) %>
+        </h5>
+        <p class="card-text">
+          <%= post.introduction %>
+        </p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">TAG</li>
+        </ul>
+        <div class="card-footer">フッター</div>
+      </div>
+    </div>
+    </div>
+    <% end %>
+  </div>
+</div>

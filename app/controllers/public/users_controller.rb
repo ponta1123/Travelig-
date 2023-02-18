@@ -1,11 +1,17 @@
 class Public::UsersController < ApplicationController
   def show
     @user = current_user
+    @name = current_user.name
     @users = @user.posts
   end
 
   def edit
     @user = current_user
+  end
+
+  def index
+    @user = current_user
+    @users = @user.posts
   end
 
   def update

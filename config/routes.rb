@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :new, :create, :edit]
     get '/user/information/edit' => 'users#edit'
     get '/user/my_page' => 'users#show'
+    #get 'user/posts' => 'users#index'
     patch '/user/information' => 'users#update'
   end
 
