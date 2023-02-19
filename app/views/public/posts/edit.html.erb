@@ -1,2 +1,28 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-4">
+      <h4>投稿内容編集画面</h4>
+    </div>
+  </div>
+  <%= form_with model: @post, url: user_information_path, method: :patch do |f| %>
+  <div class="row mt-2">
+    <%= f.label :会員ID, class: "h5 col-3 text-secondary" %>
+    <%= @user.id %>
+  </div>
+  <div class="row mt-2">
+    <%= f.label :登録名, class: "h5 col-3 text-secondary" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="row mt-2">
+    <%= f.label :メールアドレス, class: "h5 col-3 text-secondary" %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="row mt-2">
+    <%= f.label :所在地, class: "h5 col-3 text-secondary" %>
+    <%= f.text_area :address %>
+  </div>
+  <div class="row mt-4">
+    <%= f.submit "変更内容を保存", class: "col-2 offset-2 btn btn-success" %>
+  </div>
+  <% end %>
+</div>

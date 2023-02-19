@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @user = User.all
+    @user = current_user
   end
 
   def about

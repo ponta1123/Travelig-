@@ -1,9 +1,11 @@
 class Public::PostsController < ApplicationController
   def new
+    @user = current_user
     @post = Post.new
   end
 
   def index
+    @user = current_user
     @posts = Post.all
   end
 

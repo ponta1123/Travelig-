@@ -4,22 +4,22 @@
       <h4>登録情報編集画面</h4>
     </div>
   </div>
-  <%= form_with model: @user, url: user_information_path, method: :patch do |f| %>
+  <%= form_with model: @user, url: post_path(@post.id), method: :patch do |f| %>
   <div class="row mt-2">
-    <%= f.label :会員ID, class: "h5 col-3 text-secondary" %>
-    <%= @user.id %>
+    <%= f.label :タイトル, class: "h5 col-3 text-secondary" %>
+    <%= @post.title %>
   </div>
   <div class="row mt-2">
-    <%= f.label :登録名, class: "h5 col-3 text-secondary" %>
-    <%= f.text_field :name %>
+    <%= f.label :本文, class: "h5 col-3 text-secondary" %>
+    <%= f.text_area :introduction %>
   </div>
   <div class="row mt-2">
-    <%= f.label :メールアドレス, class: "h5 col-3 text-secondary" %>
-    <%= f.text_field :email %>
+    <%= f.label :観光地, class: "h5 col-3 text-secondary" %>
+    <%= f.text_area :tourist_spot, placeholder: "例：長崎県ハウステンボス" %>
   </div>
   <div class="row mt-2">
-    <%= f.label :所在地, class: "h5 col-3 text-secondary" %>
-    <%= f.text_area :address %>
+    <%= f.label :画像, class: "h5 col-3 text-secondary" %>
+    <%= f.file_field :image, accept: "image/" %>
   </div>
   <div class="row mt-4">
     <%= f.submit "変更内容を保存", class: "col-2 offset-2 btn btn-success" %>

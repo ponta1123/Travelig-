@@ -1,3 +1,4 @@
+<% if @user == current_user %>
 <div class="container">
   <div class="row mt-3 text-success">
     <div class="col text-center">
@@ -26,7 +27,16 @@
       <h4 class="text-secondary">自分の投稿一覧</h4>
     </div>
   </div>
-    <div class="row">
+  <div class="row row-cols-3 row-cols-md-4 g-4">
+     <%= render 'list', users: @users, name: @name %>
+    </div>
+  <% else %>
+  <div class="row mt-4">
+    <div class="col text-center">
+      <h4 class="text-secondary"><%= @user.name %>の投稿一覧</h4>
+    </div>
+    <div class="row row-cols-3 row-cols-md-4 g-4">
      <%= render 'list', users: @users, name: @name %>
     </div>
 </div>
+<% end %>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="card mt-2">
+    <div class="card border-primary mt-4 w-20 mx-auto">
       <%= image_tag @post.image, class: "card-image-top" %>
       <div class="card-body">
         <h5 class="card-title">
@@ -13,7 +13,7 @@
           <li class="list-group-item">TAG</li>
         </ul>
         <div class="card-footer">
-          <small class="text-muted"><%= @post.user.name %></small>
+          <h5 class="text-muted"><%= @post.user.name %></h5>
         </div>
       </div>
     </div>

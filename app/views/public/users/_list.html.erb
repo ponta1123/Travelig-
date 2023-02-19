@@ -1,7 +1,6 @@
-       <div class="col">
-        <div class="card-group w-25">
-          <% users.each do |user| %>
-           <div class="card border-primary mt-2 mx-lg-1">
+           <% users.each do |user| %>
+          <div class="col my-3">
+           <div class="card rounded border-primary h-100">
              <%= image_tag user.image, class: "card-image-top" %>
              <div class="card-body">
                <h5 class="card-title">
@@ -15,9 +14,9 @@
                <li class="list-group-item">TAG</li>
              </ul>
              <div class="card-footer">
-               <small class="text-muted"><%= name %></small>
+               <h5 class="text-muted"><%= name %></h5>
              </div>
            </div>
-          <% end %>
+
         </div>
-      </div>
+      <% end %>
