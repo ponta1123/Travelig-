@@ -23,7 +23,11 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :new, :create, :edit, :update]
     get '/user/information/edit' => 'users#edit'
     patch '/user/information' => 'users#update'
+    get 'search' => 'posts#search'
   end
+
+
+
 
   #ゲストユーザーログイン
  devise_scope :user do

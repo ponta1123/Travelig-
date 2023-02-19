@@ -4,9 +4,19 @@ class Public::PostsController < ApplicationController
     @post = Post.new
   end
 
+  def search
+   @user = current_user
+   @posts = Post.search(params[:keyword])
+   @keyword = params[:keyword]
+   render "index"
+  end
+
+
   def index
     @user = current_user
     @posts = Post.all
+
+
   end
 
   def show
