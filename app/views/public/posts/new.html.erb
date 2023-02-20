@@ -19,6 +19,10 @@
        <%= f.text_area :tourist_spot, placeholder: "例:長崎県ハウステンボス" %>
      </div>
      <div class="col-4 mt-2">
+       <i class="material-icons prefix">タグ</i>
+       <%= f.text_field :name, placeholder: "タグを複数付けるには','で区切ってください" %>
+     </div>
+     <div class="col-4 mt-2">
        <%= f.label :画像 %>
        <%= f.file_field :image, accept: "image/*" %>
      </div>

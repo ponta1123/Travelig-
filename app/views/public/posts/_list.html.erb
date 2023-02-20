@@ -1,0 +1,37 @@
+
+    <% tag_list.each do |list| %>
+    <%= link_to list.name, search_tag_path(tag_id: list.id) %><%= "(#{list.posts.count})" %>
+    <% end %>
+      <div class="row row-cols-3 row-cols-md-4 g-4">
+        <% posts.each do |post| %>
+          <div class="col my-3">
+            <div class="card rounded border-primary h-100">
+              <%= image_tag post.image, class: "card-image-top" %>
+              <div class="card-body">
+                <h5 class="card-title">
+                 <%= link_to post.title, post_path(post.id) %>
+                </h5>
+                <p class="card-text">
+                 <%= post.introduction %>
+                </p>
+              </div>
+              <ul class="list-group list-group-flush">
+               <li class="list-group-item"><%= post.tags.map(&:name).join(', ') %></li>
+              </ul>
+              <% if user_signed_in? && current_user.email == "guest@aiu.com" %>
+              <div class="card-footer">
+               <h5 class="text-muted"><%= post.user.name %></h5>
+              </div>
+              <% elsif user_signed_in? %>
+              <div class="card-footer">
+               <h5 class="text-muted"><%= link_to post.user.name, user_path(post.user.id) %></h5>
+              </div>
+              <% else %>
+              <div class="card-footer">
+               <h5 class="text-muted"><%= post.user.name %></h5>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>

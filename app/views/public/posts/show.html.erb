@@ -10,7 +10,10 @@
           <%= @post.introduction %>
         </p>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">TAG</li>
+          <% @post_tags.each do |tag| %>
+
+          <li class="list-group-item"><%= tag.name %><%= "(#{tag.posts.count})" %></li>
+          <% end %>
         </ul>
         <div class="card-footer">
           <h5 class="text-muted"><%= @post.user.name %></h5>
@@ -18,4 +21,5 @@
       </div>
     </div>
   </div>
+  <%= link_to "削除", post_path(@post.id), method: :delete %>
 </div>

@@ -20,11 +20,13 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :users, only: [:show]
-    resources :posts, only: [:index, :show, :new, :create, :edit, :update]
+    resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     get '/user/information/edit' => 'users#edit'
     patch '/user/information' => 'users#update'
     get 'search' => 'posts#search'
+    get '/search_tag' => 'posts#search_tag'
   end
+
 
 
 
