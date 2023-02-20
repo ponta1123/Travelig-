@@ -1,6 +1,6 @@
 
     <% tag_list.each do |list| %>
-    <%= link_to list.name, search_tag_path(tag_id: list.id) %><%= "(#{list.posts.count})" %>
+    　<%= link_to list.name, search_tag_path(tag_id: list.id) %><%= "(#{list.posts.count})" %>
     <% end %>
       <div class="row row-cols-3 row-cols-md-4 g-4">
         <% posts.each do |post| %>

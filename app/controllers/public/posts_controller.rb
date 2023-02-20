@@ -8,6 +8,7 @@ class Public::PostsController < ApplicationController
   #検索フォーム用
   def search
    @user = current_user
+   @tag_list = Tag.all
    @posts = Post.search(params[:keyword])
    @keyword = params[:keyword]
    render "index"

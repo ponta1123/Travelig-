@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="card border-primary mt-4 w-20 mx-auto">
+    <div class="card border-primary mt-4 w-50 mx-auto">
       <%= image_tag @post.image, class: "card-image-top" %>
       <div class="card-body">
         <h5 class="card-title">
@@ -11,15 +11,15 @@
         </p>
         <ul class="list-group list-group-flush">
           <% @post_tags.each do |tag| %>
-
-          <li class="list-group-item"><%= tag.name %><%= "(#{tag.posts.count})" %></li>
+          <li class="list-group-item"><%= link_to tag.name, search_tag_path(tag_id: tag.id) %></li>
           <% end %>
         </ul>
         <div class="card-footer">
-          <h5 class="text-muted"><%= @post.user.name %></h5>
+          <h5 class="text-muted"><%= @post.user.name %>
+          <%= link_to "投稿削除", post_path(@post.id), method: :delete, class: "btn btn-danger offset-7" %>
+          </h5>
         </div>
       </div>
     </div>
   </div>
-  <%= link_to "削除", post_path(@post.id), method: :delete %>
 </div>

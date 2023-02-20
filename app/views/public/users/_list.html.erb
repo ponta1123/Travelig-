@@ -1,22 +1,23 @@
-           <% users.each do |user| %>
-          <div class="col my-3">
-           <div class="card rounded border-primary h-100">
-             <%= image_tag user.image, class: "card-image-top" %>
-             <div class="card-body">
-               <h5 class="card-title">
-                 <%= user.title %>
-               </h5>
-               <p class="card-text">
-                 <%= user.introduction %>
-               </p>
-             </div>
-             <ul class="list-group list-group-flush">
-               <li class="list-group-item">TAG</li>
-             </ul>
-             <div class="card-footer">
-               <h5 class="text-muted"><%= name %></h5>
-             </div>
-           </div>
-
+  <div class="row row-cols-3 row-cols-md-4 g-4">
+    <% users.each do |user| %>
+      <div class="col my-3">
+        <div class="card rounded border-primary h-100">
+          <%= image_tag user.image, class: "card-image-top" %>
+          <div class="card-body">
+            <h5 class="card-title">
+             <%= link_to user.title, post_path(user.id) %>
+            </h5>
+            <p class="card-text">
+             <%= user.introduction %>
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+           <li class="list-group-item"><%= user.tags.map(&:name).join(', ') %></li>
+          </ul>
+          <div class="card-footer">
+           <h5 class="text-muted"><%= link_to name, user_path %></h5>
+          </div>
         </div>
-      <% end %>
+      </div>
+    <% end %>
+  </div>
