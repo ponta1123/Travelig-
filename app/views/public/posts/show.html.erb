@@ -1,25 +1,50 @@
-<div class="container">
+<div class="container-md">
   <div class="row">
-    <div class="card border-primary mt-4 w-50 mx-auto">
-      <%= image_tag @post.image, class: "card-image-top" %>
-      <div class="card-body">
-        <h5 class="card-title">
-          <%= @post.title %>
-        </h5>
-        <p class="card-text">
-          <%= @post.introduction %>
-        </p>
-        <ul class="list-group list-group-flush">
-          <% @post_tags.each do |tag| %>
-          <li class="list-group-item"><%= link_to tag.name, search_tag_path(tag_id: tag.id) %></li>
-          <% end %>
-        </ul>
-        <div class="card-footer">
-          <h5 class="text-muted"><%= @post.user.name %>
-          <%= link_to "投稿削除", post_path(@post.id), method: :delete, class: "btn btn-danger offset-7" %>
+    <div class="col">
+      <div class="card border-primary mt-4 w-50 mx-auto">
+        <%= image_tag @post.image, class: "card-image-top" %>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= @post.title %>
           </h5>
+          <p class="card-text">
+            <%= @post.introduction %>
+          </p>
+          <ul class="list-group list-group-flush">
+            <% @post_tags.each do |tag| %>
+            <li class="list-group-item"><%= link_to tag.name, search_tag_path(tag_id: tag.id) %></li>
+            <% end %>
+          </ul>
+          <div class="card-footer">
+            <h5 class="text-muted"><%= @post.user.name %>
+
+            </h5>
+          </div>
         </div>
       </div>
+      <% if @post.user == current_user %>
+      <%= link_to "投稿削除", post_path(@post.id), method: :delete, class: "btn btn-danger offset-3 mt-3" %>
+      <% end %>
+    </div>
+    <div class="col-4 mx-auto">
+      <p>コメントの数: <%= @post.post_comments.count %></p>
+      <% @post.post_comments.each do |post_comment| %>
+       <%= post_comment.user.name %>
+       <p class="text-start">
+         <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+         <% if post_comment.user == current_user %>
+          <%= link_to "削除", post_post_comment_path(post_comment.post,post_comment), method: :delete %>
+         <% end %>
+       </p>
+      <% end %>
+      <% if  user_signed_in? && current_user.email == "guest@aiu.com" %>
+      <% elsif user_signed_in? || admin_signed_in? %>
+      <%= form_with model: [@post, @post_comment] do |f| %>
+       <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+       <%= f.submit "送信する" %>
+      <% end %>
+      <% else %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'post_comments/create'
+    get 'post_comments/destroy'
+  end
+  get 'post_comments/create'
+  get 'post_comments/destroy'
   #管理者用
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
@@ -20,7 +26,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :users, only: [:show]
-    resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+     resources :post_comments, only: [:create, :destroy]
+    end
     get '/user/information/edit' => 'users#edit'
     patch '/user/information' => 'users#update'
     get 'search' => 'posts#search'

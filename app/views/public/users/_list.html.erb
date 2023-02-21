@@ -18,6 +18,7 @@
            <h5 class="text-muted"><%= link_to name, user_path %></h5>
           </div>
         </div>
+        <%= link_to "#{user.post_comments.count}コメント", post_path(user.id) %>
       </div>
     <% end %>
   </div>
