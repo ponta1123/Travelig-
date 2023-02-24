@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show]
     resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
      resources :post_comments, only: [:create, :destroy]
+     resources :bookmarks, only: [:create, :destroy]
     end
     get '/user/information/edit' => 'users#edit'
     patch '/user/information' => 'users#update'

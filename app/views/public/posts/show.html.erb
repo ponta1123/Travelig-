@@ -24,6 +24,11 @@
             </div>
           </div>
         </div>
+        <% if @post.bookmarked_by?(current_user) %>
+         <%= link_to "ブックマークを外す", post_bookmark_path(@post), method: :delete %>
+         <% else %>
+         <%= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %>
+         <% end %>
         <% if @post.user == current_user %>
           <%= link_to "投稿削除", post_path(@post.id), method: :delete, class: "btn btn-danger offset-3 mt-3" %>
         <% end %>
