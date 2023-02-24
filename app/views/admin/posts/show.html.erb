@@ -1,4 +1,7 @@
-<div class="card-post-container">
+<%= flash[:notice] %>
+<div class="row">
+  <div class="col-sm-8">
+     <div class="card-post">
   <div class="card w-50 mx-auto mt-5 shadow-lg">
   <%= image_tag @post.image, class: "card-imag-top" %>
   <div class="card-body">
@@ -8,4 +11,34 @@
     <%= link_to "投稿内容編集", edit_admin_post_path(@post.id), class: "ml-4 text-secondary" %>
   </div>
 </div>
-</dic>
+</div>
+  </div>
+  <div class="col-sm-3 mt-5">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+         <th scope="col">コメント</th>
+         <th scope="col">投稿者</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each_with_index do |post, i| %>
+      <tr>
+        <th scop="row"><%= i+1 %></th>
+        <td><%= post.comment %></td>
+        <td><%= post.user.name %></td>
+        <td><%= link_to "削除", admin_post_post_comment_path(post.post,post), method: :delete %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+  </div>
+
+
+
+
+
+
+

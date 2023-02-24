@@ -1,20 +1,16 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'post_comments/create'
-    get 'post_comments/destroy'
-  end
-  get 'post_comments/create'
-  get 'post_comments/destroy'
+
+
   #管理者用
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }
-
   get 'admin' => 'admin/homes#top'
-
   namespace :admin do
-    resources :posts, only: [:show, :edit, :update, :destroy, :index]
+    resources :posts, only: [:show, :edit, :update, :destroy, :index] do
+     resources :post_comments, only: [:create, :destroy]
+    end
     resources :users, only: [:show, :edit, :update]
   end
 
@@ -35,7 +31,12 @@ Rails.application.routes.draw do
     get '/search_tag' => 'posts#search_tag'
   end
 
-
+  namespace :public do
+    get 'post_comments/create'
+    get 'post_comments/destroy'
+  end
+  #get 'post_comments/create'
+  #get 'post_comments/destroy'
 
 
 

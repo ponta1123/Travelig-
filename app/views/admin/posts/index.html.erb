@@ -10,6 +10,7 @@
           <th scope="col">投稿者</th>
           <th scope="col">タイトル</th>
           <th scope="col">内容</th>
+          <th scope="col">コメント数</th>
           <th scope="col">投稿日</th>
         </tr>
       </thead>
@@ -20,6 +21,7 @@
             <td><%= link_to post.user.name, admin_user_path(post.user.id) %></td>
             <td><%= link_to post.title, admin_post_path(post.id) %></td>
             <td><%= post.introduction %></td>
+            <td><%= post.post_comments.count %></td>
             <td><%= post.created_at.strftime('%Y/%m/%d/ %H:%M') %></td>
           </tr>
         <% end %>

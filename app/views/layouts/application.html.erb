@@ -86,14 +86,12 @@
     </header>
     <% if user_signed_in? %>
     <div class="row">
-     <div class="col-2">
+     <div class="col-sm-2">
       <%= render 'layouts/sidebar' %>
      </div>
      <% else %>
      <%end %>
-     <div class="col-8">
       <%= yield %>
-     </div>
     </div>
   </body>
 </html>
