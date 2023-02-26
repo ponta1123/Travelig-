@@ -13,7 +13,7 @@
 
   <body>
     <header>
-      <div class="container text-center">
+     <div class="container-sm text-center">
         <div class="row mt-4">
           <% if  user_signed_in? && current_user.email == "guest@aiu.com" %>
             <button type="button" class="btn btn-outline-secondary mx-2">
@@ -21,6 +21,9 @@
             </button>
             <button type="button" class="btn btn-outline-secondary mx-2">
               <%= link_to "投稿一覧", posts_path %>
+            </button>
+            <button type="button" class="btn btn-outline-primary mx-2">
+              <%= link_to "マイページ", user_path(@user) %>
             </button>
             <button type="button" class="btn btn-outline-primary mx-2">
              <%= link_to "top", root_path %>
@@ -40,10 +43,13 @@
                <%= link_to "マイページ", user_path(@user) %>
              </button>
              <button type="button" class="btn btn-outline-primary mx-2">
-               about
+               <%= link_to "みんなの投稿", posts_path %>
              </button>
              <button type="button" class="btn btn-outline-primary mx-2">
                <%= link_to "新規投稿", new_post_path %>
+             </button>
+             <button type="button" class="btn btn-outline-primary mx-2">
+                <%= link_to "ブックマーク一覧", post_bookmarks_path(@user) %>
              </button>
              <button type="button" class="btn btn-outline-primary mx-2">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -62,7 +68,7 @@
              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
            </button>
            <div class="col-4 text-danger">
-               <p>管理者としてログイン中</p>
+             <p>管理者としてログイン中</p>
            </div>
           <% else %>
             <button type="button" class="btn btn-outline-secondary mx-2">
@@ -72,25 +78,12 @@
               <%= link_to "新規登録", new_user_registration_path %>
             </button>
             <button type="button" class="btn btn-outline-secondary mx-2">
-              about
-            </button>
-            <button type="button" class="btn btn-outline-secondary mx-2">
-              投稿一覧
-            </button>
-            <button type="button" class="btn btn-outline-secondary mx-2">
            　<%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post %>
             </button>
           <% end %>
         </div>
       </div>
     </header>
-    <% if user_signed_in? %>
-    <div class="row">
-     <div class="col-sm-2">
-      <%= render 'layouts/sidebar' %>
-     </div>
-     <% else %>
-     <%end %>
       <%= yield %>
     </div>
   </body>

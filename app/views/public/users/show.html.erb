@@ -1,4 +1,13 @@
-<% if @user == current_user %>
+<% if  user_signed_in? && current_user.email == "guest@aiu.com" %>
+<div class="container">
+  <div class="row mt-5 text-success">
+    <div class="col text-center">
+      <h3>マイページ機能は登録後使用できます。</h3>
+      <h3>新規投稿やコメント機能も使用可能になります。</h3>
+    </div>
+  </div>
+</div>
+<% elsif @user == current_user %>
 <div class="container">
   <div class="row mt-3 text-success">
     <div class="col text-center">

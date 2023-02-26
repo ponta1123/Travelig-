@@ -6,7 +6,7 @@
   </div>
   <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
   <div class="row mt-2">
-    <%= f.label :投稿No, class: "h5 col-3 text-secondary" %>
+    <%= f.label :投稿no, class: "h5 col-3 text-secondary" %>
     <%= @post.id %>
   </div>
   <div class="row mt-2">
@@ -22,8 +22,8 @@
     <%= f.text_area :tourist_spot, placeholder: "例：長崎県ハウステンボス" %>
   </div>
   <div class="row mt-2">
-    <%= f.label :タグ (,で区切ると複数登録できます) %>
-    <%= f.text_field :name, value: @tag_list, class: "form-control" %>
+    <%= f.label :タグ,class: "h5 col-3 text-secondary" %>
+    <%= f.text_field :name, value: @tag_list, placeholder: ",で区切ると複数登録出来ます",class: "form-control" %>
   </div>
   <div class="row mt-4">
     <%= f.submit "変更内容を保存", class: "col-2 offset-2 btn btn-success" %>

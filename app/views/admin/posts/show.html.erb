@@ -1,20 +1,21 @@
 <%= flash[:notice] %>
-<div class="row">
+<div class="row-sm">
   <div class="col-sm-8">
      <div class="card-post">
-  <div class="card w-50 mx-auto mt-5 shadow-lg">
-  <%= image_tag @post.image, class: "card-imag-top" %>
-  <div class="card-body">
-    <h5 class="card-title"><%= @post.title %></h5>
-    <p class="card-text"><%= @post.introduction %></p>
-    <%= link_to @post.user.name, admin_user_path(@post.user.id), class: "btn btn-info" %>
-    <%= link_to "投稿内容編集", edit_admin_post_path(@post.id), class: "ml-4 text-secondary" %>
+      <div class="card w-50 offset-6 mt-5 shadow-lg">
+       <%= image_tag @post.image, class: "card-imag-top" %>
+       <div class="card-body">
+        <h5 class="card-title"><%= @post.title %></h5>
+        <p class="card-text"><%= @post.introduction %></p>
+        <%= link_to @post.user.name, admin_user_path(@post.user.id), class: "btn btn-info" %>
+        <%= link_to "投稿内容編集", edit_admin_post_path(@post.id), class: "ml-2 btn btn-secondary" %>
+        <%= link_to "投稿削除", admin_post_path(@post.user.id), method: :delete, class: "ml-2 btn btn-danger" %>
+       </div>
+      </div>
+     </div>
   </div>
-</div>
-</div>
-  </div>
-  <div class="col-sm-3 mt-5">
-  <table>
+  <div class="col-sm-5 offset-3 mt-5">
+   <table class="table table-striped">
     <thead>
       <tr>
         <th></th>
@@ -32,9 +33,9 @@
       </tr>
       <% end %>
     </tbody>
-  </table>
-</div>
+   </table>
   </div>
+</div>
 
 
 

@@ -1,0 +1,29 @@
+
+<div class="container-sm">
+  <div class="table-responsive">
+  <div class="row mt-4 mb-4">
+    <h4 class="text-center offset-1">ブックマーク一覧</h4>
+  </div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>投稿者</th>
+        <th>タイトル</th>
+        <th>本文</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bookmarks.each do |bookmark| %>
+      <tr>
+        <td><%= bookmark.post.user.name %></td>
+        <td><%= link_to post_path(bookmark.post) do %>
+         <%= bookmark.post.title %>
+         <% end %>
+        </td>
+        <td><%= bookmark.post.introduction %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
