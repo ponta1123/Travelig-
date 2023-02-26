@@ -25,6 +25,3 @@ https://docs.google.com/spreadsheets/d/16D2k3tQWKrS3tNQwGZDaSulpRNJRnBmqQwMmtuID
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-
-## 使用素材
-- google map api
