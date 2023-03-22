@@ -40,7 +40,7 @@
               <%= link_to "top", root_path %>
              </button>
              <button type="button" class="btn btn-outline-primary mx-2">
-               <%= link_to "マイページ", user_path(@user) %>
+               <%= link_to "マイページ", user_path(current_user) %>
              </button>
              <button type="button" class="btn btn-outline-primary mx-2">
                <%= link_to "みんなの投稿", posts_path %>
@@ -49,7 +49,7 @@
                <%= link_to "新規投稿", new_post_path %>
              </button>
              <button type="button" class="btn btn-outline-primary mx-2">
-                <%= link_to "ブックマーク一覧", post_bookmarks_path(@user) %>
+                <%= link_to "ブックマーク一覧", post_bookmarks_path(current_user) %>
              </button>
              <button type="button" class="btn btn-outline-primary mx-2">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

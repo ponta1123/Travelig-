@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   has_one_attached :image
+  validates :image, presence: true
   belongs_to :user
   has_many :post_tags, dependent: :destroy
   has_many :tags,through: :post_tags
